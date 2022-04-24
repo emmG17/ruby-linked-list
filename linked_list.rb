@@ -6,7 +6,7 @@ class LinkedList
       @next_node = next_node
       self.data = data
     end
-    
+
   end
   private_constant :Node
   attr_reader :head, :tail, :size
@@ -44,25 +44,11 @@ class LinkedList
     @head
   end
 
-  def at(index)
-    if index.between?(0, @size - 1)
-      return @tail if index == @size - 1
-
-      traverse(index)
-    end
-    nil
-  end
-
-  def pop
-    p traverse(@size - 1)
-  end
-
-  def traverse(index = @size)
+  def traverse(iters = @size, &block)
     node = @head
-    iters = index.zero? ? 0 : index - 1
     iters.times do
+      block.call node if block_given?
       node = node.next_node
     end
-    node
   end
 end
