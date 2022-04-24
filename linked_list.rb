@@ -67,6 +67,12 @@ class LinkedList
     found_value
   end
 
+  def to_s
+    output_ary = []
+    traverse { |node| output_ary.push("( #{node.data} )") }
+    output_ary.join(' -> ')
+  end
+
   def add_first_node(data)
     @head = Node.new(data)
     @tail = @head
