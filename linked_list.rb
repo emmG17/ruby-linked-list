@@ -67,10 +67,11 @@ class LinkedList
     return nil unless iters >= 0 && iters < @size
 
     node = @head
+    yield node if block_given?
     count = 0
     while count < iters
-      yield node if block_given?
       node = node.next_node
+      yield node if block_given?
       count += 1
     end
     node
