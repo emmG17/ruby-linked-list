@@ -6,8 +6,8 @@ class LinkedList
       @next_node = next_node
       self.data = data
     end
-
   end
+
   private_constant :Node
   attr_reader :head, :tail, :size
 
@@ -56,6 +56,15 @@ class LinkedList
 
   def at(index)
     traverse(index)
+  end
+
+  def contains?(value)
+    found_value = false
+    traverse do |node|
+      found_value = node.data == value
+      break if found_value
+    end
+    found_value
   end
 
   def add_first_node(data)
