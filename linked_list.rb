@@ -73,6 +73,8 @@ class LinkedList
     output_ary.join(' -> ')
   end
 
+  private
+
   def add_first_node(data)
     @head = Node.new(data)
     @tail = @head
